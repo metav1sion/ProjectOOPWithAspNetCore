@@ -1,0 +1,32 @@
+﻿@using Proje_OOP.Entity
+@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoreLayout.cshtml";
+}
+
+<title>Ürünler</title>
+<h1>Ürün Sayfası</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ürün Adı</th>
+        <th>Fİyat</th>
+        <th>Stok</th>
+        <th style="text-align: center;">Sil</th>
+        <th style="text-align: center;">Düzenle</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Stock</td>
+            <td style="text-align: center;"><a class="btn btn-danger" href="/Product/DeleteProduct/@item.ID">Sil</a></td>
+            <td style="text-align: center;"><a class="btn btn-success" href="/Product/UpdateProduct/@item.ID">Düzenle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Product/AddProduct/" class="btn btn-primary">Yeni Ürün Girişi</a>
